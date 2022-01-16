@@ -19,12 +19,16 @@ class CoinWrapper extends Component {
     this.flipCoin = this.flipCoin.bind(this);
   }
 
-  incrementFlips() {
-    return { numFlips: this.state.numFlips + 1 };
+  incrementFlips(prevState) {
+    return { numFlips: prevState.numFlips + 1 };
   }
 
-  incrementSmileys() {
-    return { smileyCount: this.state.smileyCount + 1 };
+  incrementSmileys(prevState) {
+    return { smileyCount: prevState.smileyCount + 1 };
+  }
+
+  incrementMushrooms(prevState) {
+    return { mushroomCount: prevState.mushroomCount + 1 };
   }
 
   flipCoin() {
@@ -34,12 +38,13 @@ class CoinWrapper extends Component {
     this.setState({
       img: randomImg,
     });
+
     this.setState(this.incrementFlips);
 
     if (randomImg === smiley_face) {
       this.setState(this.incrementSmileys);
     } else {
-      this.setState({ mushroomCount: this.state.mushroomCount + 1 });
+      this.setState(this.incrementMushrooms);
     }
   }
 
