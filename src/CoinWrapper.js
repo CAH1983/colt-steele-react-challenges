@@ -44,18 +44,19 @@ class CoinWrapper extends Component {
   }
 
   render() {
+    const { img, numFlips, smileyCount, mushroomCount } = this.state;
     return (
       <div className="CoinWrapper center-container">
-        <Coin imgURL={this.state.img} />
+        <Coin imgURL={img} />
 
         <button className="CoinWrapper-btn" onClick={this.flipCoin}>
           {" "}
           Flip the coin{" "}
         </button>
 
-        <p> Number of flips : {this.state.numFlips} </p>
-        <p> Smiley face : {this.state.smileyCount} </p>
-        <p> Mushroom(s) eaten : {this.state.mushroomCount}</p>
+        <p> Number of flips : {numFlips} </p>
+        <p> Smiley face : {smileyCount} </p>
+        <p> Mushroom(s) eaten : {mushroomCount}</p>
       </div>
     );
   }
