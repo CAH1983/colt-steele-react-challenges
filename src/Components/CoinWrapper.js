@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Coin from "./Coin";
-import smiley_face from "./Images/smiley_face.png";
-import mushroom_face from "./Images/mushroom.png";
+import smiley_face from "../Images/smiley_face.png";
+import mushroom_face from "../Images/mushroom.png";
 
 class CoinWrapper extends Component {
   static defaultProps = {

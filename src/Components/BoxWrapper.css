@@ -1,0 +1,11 @@
+.BoxWrapper {
+  background-color: lightgrey;
+}
+
+.BoxContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 1400px;
+  margin: 3em auto;
+}
