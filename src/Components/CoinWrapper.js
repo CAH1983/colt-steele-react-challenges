@@ -12,44 +12,28 @@ class CoinWrapper extends Component {
     super(props);
     this.state = {
       img: smiley_face,
-      numFlips: 0,
+      flipCount: 0,
       smileyCount: 0,
       mushroomCount: 0,
     };
     this.flipCoin = this.flipCoin.bind(this);
   }
 
-  incrementFlips(prevState) {
-    return { numFlips: prevState.numFlips + 1 };
-  }
-
-  incrementSmileys(prevState) {
-    return { smileyCount: prevState.smileyCount + 1 };
-  }
-
-  incrementMushrooms(prevState) {
-    return { mushroomCount: prevState.mushroomCount + 1 };
-  }
-
   flipCoin() {
-    const randomImg =
-      this.props.images[Math.floor(Math.random() * this.props.images.length)];
+    const randomImg = this.props.images[Math.floor(Math.random() * this.props.images.length)];
 
-    this.setState({
-      img: randomImg,
+    this.setState((currState) => {
+      return {
+        img: randomImg,
+        flipCount: currState.flipCount + 1,
+        smileyCount: currState.smileyCount + (randomImg === smiley_face ? 1 : 0),
+        mushroomCount: currState.mushroomCount + (randomImg === mushroom_face ? 1 : 0),
+      };
     });
-
-    this.setState(this.incrementFlips);
-
-    if (randomImg === smiley_face) {
-      this.setState(this.incrementSmileys);
-    } else {
-      this.setState(this.incrementMushrooms);
-    }
   }
 
   render() {
-    const { img, numFlips, smileyCount, mushroomCount } = this.state;
+    const { img, flipCount, smileyCount, mushroomCount } = this.state;
     return (
       <div className="CoinWrapper center-container">
         <Coin imgURL={img} />
@@ -59,7 +43,7 @@ class CoinWrapper extends Component {
           Flip the coin{" "}
         </button>
 
-        <p> Number of flips : {numFlips} </p>
+        <p> Number of flips : {flipCount} </p>
         <p> Smiley face : {smileyCount} </p>
         <p> Mushroom(s) eaten : {mushroomCount}</p>
       </div>
